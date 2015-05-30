@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title></title>
+    <meta name="description" content="">
+    <meta name="author" content="Victor Mejia">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/main.css" id="theme">
+
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/prism-flatland.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="reveal">
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1><span class="red">Angular2</span> Preview</h1>
+          <p>
+            Created by <a href="http://victormejia.github.io">Victor Mejia</a>
+          </p>
+        </section>
+
+        <section>
+          <h2>about me</h2>
+          <p>Front-End Engineer @ Mirth</p>
+          <hr />
+          <p>Tweeting <a href="https://twitter.com/_victormejia">@_victormejia</a></p>
+          <p>Coding <a href="https://github.com/victormejia/">@victormejia</a></p>
+        </section>
+
+
+        <section>
+          <h2>Disclaimer</h2>
+          <p>
+            Angular2 is a work in progress.
+          </p>
+          <p>
+            Things might/will change.
+          </p>
+        </section>
+
+        <section title="">
+          <h2>What We Will Cover</h2>
+          <ul>
+            <li>Core Concepts</li>
+            <li>New Syntax</li>
+            <li>New Template Syntax</li>
+            <li>Directives & Components</li>
+            <li>Dependeny Injection</li>
+            <li>Writing future proof code</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>What We Won't Cover</h2>
+          <ul>
+            <li>Router (just got ported)</li>
+            <li>Testing and Mocking</li>
+            <li>E2E Testing</li>
+            <li>Forms</li>
+            <li>Core Services (XHR etc.)</li>
+            <li>Number crunching</li>
+          </ul>
+        </section>
+
+        <!--
+          Angular 1.x is old
+        -->
+        <section title="Motivation">
+          <h2>Angular 1 is aging</h2>
+          <p class="text-cream">
+            The code base for Angular dates back to <span class="text-rebel">2009</span>
+          </p>
+        </section>
+
+        <!--
+          Cognitive Model
+        -->
+
+        <section title="Cognitive Model">
+          <h2>Simple Cognitive Model</h2>
+          <p class="era-point">Angular 1.x has many concepts</p>
+          <p class="era-point">Concepts have a learning curve</p>
+        </section>
+
+        <section title="Cognitive Model">
+          <h3>Angular 1.x Concepts</h3>
+          <p class="era-point">Controller</p>
+          <p class="era-point">Factory</p>
+          <p class="era-point">Service</p>
+          <p class="era-point">Provider</p>
+          <p class="era-point">Directive</p>
+          <p class="era-point">Transclusion</p>
+          <p class="era-point">Module</p>
+          <p class="era-point">Scope</p>
+        </section>
+
+        <!-- <section title="Web Components">
+          <h2>Web Components</h2>
+          <p class="era-point">Angular 1.x is difficult with Web Components</p>
+          <p class="era-point">1:1 ratio of directive to custom event</p>
+        </section> -->
+
+        <!--
+          Angular 1.x Improvements
+        -->
+        <!-- <section title="Improvements">
+          <h2>Improvements</h2>
+          <p class="era-point">$timeout and $apply</p>
+          <p class="era-point">Two-way data-binding</p>
+          <p class="era-point">$scope</p>
+        </section> -->
+
+        <!--
+          Motivation
+        -->
+        <section title="Motivation">
+          <h2>Motivation</h2>
+          <p class="era-point">Web Standards</p>
+          <p class="era-point">Performance</p>
+          <p class="era-point">Simple Cognitive Model</p>
+        </section>
+
+        <!--
+          New Web Standards Replace Angular 1 Features
+        -->
+
+        <section title="Motivation">
+          <h4 class="text-medium">3 Main Web Standards Behind Angular 2</h4>
+          <p>Object.observe()</p>
+          <p>ES6</p>
+          <p>Web Components</p>
+        </section>
+
+        <section data-background="#F0DB4F">
+          <h2>The Future is Now</h2>
+          <h1>ES6</h1>
+        </section>
+
+        <section>
+          <h2>ES6 Brings Many Cool New Features</h2>
+          <p>Classes</p>
+          <p>Modules</p>
+          <p>Arrow Functions</p>
+        </section>
+
+        <section>
+          <h2>ES6 Classes</h2>
+          <pre>
+<code class="language-javascript">
+  class User {
+    constructor(email) {
+      this.email = email;
+    }
+    savePassword(pwd) {
+      this.password = pwd;
+    }
+  }
+
+  var User = new User('hithere@email.com');
+  user.savePassword('easyPassword');
+</code>            
+          </pre>
+        </section>
+
+        <section>
+          <h2>ES5 Class</h2>
+          <pre>
+<code class="language-javascript">
+  function User(email) {
+    this.email = email;
+  }
+
+  User.prototype.savePassword = function (pwd) {
+    this.password = pwd;
+  }
+
+  var User = new User('hithere@email.com');
+  user.savePassword('easyPassword');
+</code>
+          </pre>
+        </section>
+
+      <section>
+        <h2>ES6 Modules</h2>
+        <pre>
+<code class="language-javascript">
+// 'services/TodoService.js'
+export class TodoService {
+  constructor() {
+    this.todos = [];
+  }
+  add(todo) {
+    this.todos.push(todo);
+  }
+}
+</code>
+        </pre>
+      </section>
+
+      <section>
+        <h2>ES6 Modules</h2>
+<pre>
+<code class="language-javascript">
+  import {TodoService} from 'services/TodoService';
+</code>
+</pre>
+      </section>
+
+        <section>
+          <p class="text-medium">Your not-so first look...</p>
+        </section>
+
+        <section title="AtScript">
+          <p class="text-medium">Angular2</p>
+          <pre>
+<code data-trim class="language-java">
+@Component({
+  selector: 'todo-app',
+  templateUrl: '/todos.html'
+})
+class TodoApp {
+  todos;
+  constructor() {
+    this.todos = ['Item1', 'Item2'];
+  }
+}
+</code>
+          </pre>
+        </section>
+        
+        <section title="AtScript">
+          <h2>Annotations</h2>
+          <p class="era-point">
+            Provides syntax sugar for meta-data annotations
+          </p>
+          <pre>
+<code data-trim class="language-java">
+@Component({
+  selector: 'foo',
+  templateUrl: '/foo.html'
+})
+class Foo {
+
+}
+</code>
+          </pre>
+        </section>
+        
+        <section  data-background="img/typescript.png">
+          
+        </section>
+
+        <section title="AtScript">
+          <h2>TypeScript</h2>
+          <p class="era-point">
+            Superset of JavaScript
+          </p>
+          <p class="era-point">
+            It's a transpiler + develoment experience
+          </p>
+          <p>Providing annotation support in the latest alpha</p>
+          <p class="era-point">
+            Angular team working with TypeScript team on proposals for TC39 standards committe.
+          </p>
+        </section>
+
+        <section data-background="img/babel.png"></section>
+
+        <section>
+          <h2><a href="http://kangax.github.io/compat-table/es6/">Kangax Compatibility Table</a></h2>
+        </section>
+
+        <section title="AtScript">
+          <h2>TypeScript</h2>
+          <p class="era-point">
+            Compiles to ES5
+          </p>
+          <p class="era-point">
+            Not required for Angular2
+          </p>
+          <p class="era-point">
+            Types are optional
+          </p>
+        </section>
+
+        <section title="Components">
+          <p class="text-medium">Components</p>
+          <pre>
+<code data-trim class="language-java">
+@Component({
+  selector: 'todo-app',
+  template: new TemplateConfig({
+    url: '/todos.html'
+  })
+})
+class TodoApp {
+  todos;
+  constructor() {
+    this.todos = ['Item1', 'Item2'];
+  }
+}
+</code>
+          </pre>
+        </section>
+
+        <section title="Components">
+          <p class="text-small">Component Annotation</p>
+          <pre>
+<code data-trim class="language-java">
+@Component({
+  selector: 'todo-app',
+  template: new TemplateConfig({
+    url: '/todos.html'
+  })
+})
+</code>
+          </pre>
+        </section>
+
+        <section title="Components">
+          <p class="text-small">Component Controller</p>
+          <pre>
+<code data-trim class="language-java">
+class TodoApp {
+  todos;
+  constructor() {
+    this.todos = ['Item1', 'Item2'];
+  }
+}
+</code>
+          </pre>
+        </section>
+
+        <section title="Components">
+          <p class="text-medium">Components</p>
+          <pre>
+<code data-trim class="language-java">
+@Component({
+  selector: 'todo-app',
+  template: new TemplateConfig({
+    url: '/todos.html'
+  })
+})
+class TodoApp {
+  todos;
+  constructor() {
+    this.todos = ['Item1', 'Item2'];
+  }
+}
+</code>
+          </pre>
+        </section>
+
+        <section title="Bootstrapping">
+          <p class="text-medium">Bootstrapping</p>
+        </section>
+
+        <section title="Bootstrapping">
+          <p class="text-medium">Angular 1.x</p>
+
+          <pre>
+<code data-trim class="language-javascript">
+var app = angular.module('app', []);
+</code>
+          </pre>
+
+          <pre>
+<code data-trim class="language-markup">
+&lt;body ng-app="app"&gt;
+
+&lt;/body&gt;
+</code>
+          </pre>
+
+        </section>
+
+        <section title="Bootstrapping">
+          <pre>
+<code data-trim class="language-javascript">
+app.controller('MyCtrl', function($scope) {
+  $scope.name = 'David';
+});
+</code>
+          </pre>
+
+          <pre>
+<code data-trim class="language-markup">
+&lt;body ng-app="app"&gt;
+
+  &lt;div ng-controller="MyCtrl"&gt;
+    My name is {{ name }}
+  &lt;/div&gt;
+
+&lt;/body&gt;
+</code>
+          </pre>
+
+        </section>
+
+        <section title="Bootstrapping">
+          <h3>Angular 1.x</h3>
+          <ol>
+            <li class="era-point">Create Module</li>
+            <li class="era-point">Declare ng-app</li>
+            <li class="era-point">Create controller</li>
+            <li class="era-point">Attach items to $scope</li>
+            <li class="era-point">Declare Controller</li>
+            <li class="era-point">Create Template</li>
+          </ol>
+        </section>
+
+        <section title="Bootstrapping">
+          <p class="text-medium">Angular2 Bootstrapping</p>
+        </section>
+
+        <section title="Bootstrapping">
+          <p class="text-small">Create Component</p>
+          <pre>
+<code data-trim class="language-java">
+@Component({
+  selector: 'todo-app',
+  template: new TemplateConfig({
+    url: '/todos.html'
+  })
+})
+export class TodoApp {
+  todos;
+  constructor() {
+    this.todos = ['Item1', 'Item2'];
+  }
+}
+</code>
+          </pre>
+        </section>
+        
+        <section>
+          <p class="text-small">bootstrap</p>
+          <pre>
+<code data-trim class="language-javascript">
+import {bootstrap} from 'angular';
+import {TodoApp} from 'todoapp';
+bootstrap(TodoApp);
+</code>
+          </pre>
+
+        </section>
+
+        <section title="Bootstrapping">
+          <p class="text-medium">ES6/TypeScript compilation</p>
+          <br> <br>
+          <p class="era-point">Use TypeScript Transpiler</p>
+          <p class="era-point">In Browser or CLI</p>
+          <p class="era-point">Working on key-turn tooling solution</p>
+        </section>
+
+        <section title="Bootstrapping">
+          <h3>Angular2</h3>
+          <ol>
+            <li class="era-point">Create Component</li>
+            <li class="era-point">Create Template</li>
+            <li class="era-point">bootstrap</li>
+            <li class="era-point">Transpilation</li>
+          </ol>
+        </section>
+
+        <section title="Template Syntax">
+          <p class="text-medium text-cream">
+            Template Syntax
+          </p>
+        </section>
+
+        <section title="Template Syntax">
+          <pre>
+<code data-trim class="language-java">
+@Component({
+  selector: 'name-change',
+  template: new TemplateConfig({ url: 'name-change.html' })
+})
+class NameChange {
+  name;
+  constructor() {
+    this.name = '';
+  }
+  changeName(newName) {
+    this.name = newName;
+  }
+}
+</code>
+          </pre>
+          </section>
+          
+          <section>
+          <pre>
+<code data-trim class="language-markup">
+&lt;div> My name is {{ name }} &lt;/div&gt;
+&lt;div&gt;
+  &lt;input #newname type="text"&gt;
+  &lt;button (click)="changeName(newname.value)"
+          [disabled]="newname.value == 'David'"&gt; Change Name
+  &lt;/button&gt;
+&lt;/div&gt;
+</code>
+          </pre>
+
+        </section>
+
+        <section title="Template Syntax">
+          <p class="text-medium">Local Variables - DOM Reference</h2>
+
+          <pre>
+<code data-trim class="language-markup">
+&lt;div&gt;
+  &lt;input #newname type="text"&gt;
+  {{ newname.value }}
+&lt;/div&gt;
+</code>
+          </pre>
+
+        </section>
+
+        <section title="Template Syntax">
+          <p class="text-medium">Event Handlers</h2>
+
+          <pre>
+<code data-trim class="language-markup">
+&lt;div&gt;
+  &lt;input #newname type="text"&gt;
+  &lt;button (click)="changeName($event, newname.value)"&gt;
+&lt;/div&gt;
+</code>
+          </pre>
+
+        </section>
+
+        <section title="Template Syntax">
+          <p class="text-medium">Property Bindings</h2>
+
+          <pre>
+<code data-trim class="language-markup">
+&lt;div&gt;
+  &lt;input #newname type="text"&gt;
+  &lt;span [textContent]="newname.value"&gt;&lt;/span&gt;
+&lt;/div&gt;
+</code>
+          </pre>
+
+        </section>
+
+        <section title="Template Syntax">
+          <h3>All Together</h3>
+          <pre>
+<code data-trim class="language-java">
+@Component({
+  selector: 'name-change',
+  template: new TemplateConfig({ url: 'name-change.html' })
+})
+class NameChange {
+  name;
+  constructor() {
+    this.name = '';
+  }
+  changeName(newName) {
+    this.name = newName;
+  }
+}
+</code>
+          </pre>
+          </section>
+
+        <section> 
+          <h3>All Together</h3>
+          <pre>
+<code data-trim class="language-markup">
+&lt;div> My name is {{ name }} &lt;/div&gt;
+&lt;div&gt;
+  &lt;input #newname type="text"&gt;
+  &lt;button (click)="changeName(newname.value)"
+          [disabled]="newname.value == 'David'"&gt; Change Name
+  &lt;/button&gt;
+&lt;/div&gt;
+</code>
+          </pre>
+
+        </section>
+
+        <section title="Template Syntax">
+          <h2>Uniformity</h2>
+
+          <p class="era-point">(event) - for events</p>
+          <p class="era-point">[property] - for properties</p>
+          <p>#view-reference</p>
+
+        </section>
+
+        <section title="Template Syntax">
+          <h3>Flexibility</h3>
+          <p class="text-small">Angular 1.x</small>
+          <pre>
+<code data-trim class="language-markup">
+&lt;div> My name is {{ name }} &lt;/div&gt;
+&lt;div&gt;
+  &lt;input type="text" ng-model="name"&gt;
+  &lt;button ng-name-change="changeName(name)"&gt;Change Name&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+          <p class="text-small">Angular2</small>
+          <pre>
+<code data-trim class="language-markup">
+&lt;div> My name is {{ name }} &lt;/div&gt;
+&lt;div&gt;
+  &lt;input #newname type="text"&gt;
+  &lt;button (namechange)="changeName(newname.value)"&gt;Change Name&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+        </section>
+
+        <section title="Change Detection">
+          <p class="text-medium text-cream">
+            Change Detection
+          </p>
+        </section>
+
+        <section title="Change Detection">
+          <p class="era-point">An Angular2 application is a tree of components</h2>
+          <img src="/images/change-detection.png" alt="" class="no-style" />
+          <br>
+          <a href="http://victorsavkin.com/post/110170125256/change-detection-in-angular-2">Victor Savkin's Blog Post</a>
+        </section>
+
+        <section title="Change Detection">
+          <p class="text-medium">Zone.js</p>
+          <p class="era-point">Informs Angular when to run change detection</p>
+        </section>
+
+        <section title="Change Detection">
+          <p class="text-medium">No more <span class="text-amber">$timeout</span>!</p>
+          <pre>
+<code data-trim class="language-javascript">
+app.controller('UserCtrl', function($scope, $timeout) {
+  var ref = new Firebase('https://&lt;my-firebase&gt;.firebaseio.com/user/1');
+
+  ref.on('value', function(snap) {
+
+    $timeout(function() {
+      $scope.user = snap.val();
+    });
+
+  });
+});
+</code>
+          </pre>
+        </section>
+
+        <section>
+          <h2>Show me the code!</h2>
+          <h1>&lt;&gt;</h1>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="plugin/prism/prism.js"></script>
+    <script src="js/reveal.min.js"></script>
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+      // open links in new tab
+      var links = document.querySelectorAll('a');
+      for (var i = 0; i < links.length; i++) {
+        links[i].setAttribute('target', '_blank');
+      };
+    </script>
+
+  </body>
+</html>
