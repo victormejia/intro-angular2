@@ -546,8 +546,8 @@ class NameChange {
           <pre>
 <code data-trim class="language-markup">
 &lt;div&gt;
-  &lt;input #newname type="text"&gt;
-  {{ newname.value }}
+  &lt;input #newname type="text" (keyup)="updateName($event, newname)"&gt;
+  {{ name }}
 &lt;/div&gt;
 </code>
           </pre>
@@ -660,7 +660,6 @@ class NameChange {
 
         <section title="Change Detection">
           <p class="era-point">An Angular2 application is a tree of components</h2>
-          <img src="/images/change-detection.png" alt="" class="no-style" />
           <br>
           <a href="http://victorsavkin.com/post/110170125256/change-detection-in-angular-2">Victor Savkin's Blog Post</a>
         </section>
@@ -699,13 +698,13 @@ app.controller('UserCtrl', function($scope, $timeout) {
         </section>
 
         <section>
-          <p>
+          <p class="fragment">
             Still very experimental, things changing a lot
           </p>
-          <p>
+          <p class="fragment">
             Router not fully ported/documented yet
           </p>
-          <p>
+          <p class="fragment">
             Forms module has not matured
           </p>
         </section>
@@ -713,7 +712,7 @@ app.controller('UserCtrl', function($scope, $timeout) {
         <section>
           <h2>Preparing for Angular 2</h2>
           <ul>
-            <li class="fragment"><a href="#">Use ES6!</a></li>
+            <li class="fragment"><a href="https://babeljs.io/docs/learn-es2015/">Use ES6!</a></li>
             <li class="fragment">Make everything a directive (Component Approach)</li>
             <li class="fragment">
               Use <code><a href="https://github.com/toddmotto/angularjs-styleguide#controllers">controllerAs</a></code> syntax
