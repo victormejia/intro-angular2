@@ -49,7 +49,7 @@
 
         <section>
           <h2>about me</h2>
-          <p>Front-End Engineer @ Mirth</p>
+          <p>Software Engineer @ CoStar Group</p>
           <hr />
           <p>Tweeting <a href="https://twitter.com/_victormejia">@_victormejia</a></p>
           <p>Coding <a href="https://github.com/victormejia/">@victormejia</a></p>
@@ -58,11 +58,14 @@
 
         <section>
           <h2>Disclaimer</h2>
-          <p>
+          <p class="fragment">
             Angular2 is a work in progress.
           </p>
-          <p>
+          <p class="fragment">
             Things might/will change.
+          </p>
+          <p class="fragment">
+            I'm not an Angular 2 expert...yet :)
           </p>
         </section>
 
@@ -73,7 +76,7 @@
             <li>New Syntax</li>
             <li>New Template Syntax</li>
             <li>Directives & Components</li>
-            <li>Dependeny Injection</li>
+            <li>(Simple) Dependency Injection</li>
             <li>Writing future proof code</li>
           </ul>
         </section>
@@ -186,7 +189,7 @@
 
   var User = new User('hithere@email.com');
   user.savePassword('easyPassword');
-</code>            
+</code>
           </pre>
         </section>
 
@@ -244,7 +247,9 @@ export class TodoService {
 <code data-trim class="language-java">
 @Component({
   selector: 'todo-app',
-  templateUrl: '/todos.html'
+})
+@View({
+  templateUrl: 'todo.html',
 })
 class TodoApp {
   todos;
@@ -255,7 +260,7 @@ class TodoApp {
 </code>
           </pre>
         </section>
-        
+
         <section title="AtScript">
           <h2>Annotations</h2>
           <p class="era-point">
@@ -265,7 +270,9 @@ class TodoApp {
 <code data-trim class="language-java">
 @Component({
   selector: 'foo',
-  templateUrl: '/foo.html'
+})
+@View({
+  templateUrl: 'foo.html'
 })
 class Foo {
 
@@ -273,21 +280,21 @@ class Foo {
 </code>
           </pre>
         </section>
-        
+
         <section  data-background="img/typescript.png">
-          
+
         </section>
 
         <section title="AtScript">
           <h2>TypeScript</h2>
-          <p class="era-point">
+          <p class="fragment">
             Superset of JavaScript
           </p>
-          <p class="era-point">
+          <p class="fragment">
             It's a transpiler + develoment experience
           </p>
-          <p>Providing annotation support in the latest alpha</p>
-          <p class="era-point">
+          <p class="fragment">Providing annotation support in the latest alpha</p>
+          <p class="fragment">
             Angular team working with TypeScript team on proposals for TC39 standards committe.
           </p>
         </section>
@@ -317,9 +324,9 @@ class Foo {
 <code data-trim class="language-java">
 @Component({
   selector: 'todo-app',
-  template: new TemplateConfig({
-    url: '/todos.html'
-  })
+})
+@View({
+  templateUrl: 'todos.html'
 })
 class TodoApp {
   todos;
@@ -337,9 +344,9 @@ class TodoApp {
 <code data-trim class="language-java">
 @Component({
   selector: 'todo-app',
-  template: new TemplateConfig({
-    url: '/todos.html'
-  })
+})
+@View({
+  templateUrl: 'todos.html'
 })
 </code>
           </pre>
@@ -365,9 +372,9 @@ class TodoApp {
 <code data-trim class="language-java">
 @Component({
   selector: 'todo-app',
-  template: new TemplateConfig({
-    url: '/todos.html'
-  })
+})
+@View({
+  templateUrl: 'todos.html'
 })
 class TodoApp {
   todos;
@@ -406,7 +413,7 @@ var app = angular.module('app', []);
           <pre>
 <code data-trim class="language-javascript">
 app.controller('MyCtrl', function($scope) {
-  $scope.name = 'David';
+  $scope.name = 'Victor';
 });
 </code>
           </pre>
@@ -428,12 +435,12 @@ app.controller('MyCtrl', function($scope) {
         <section title="Bootstrapping">
           <h3>Angular 1.x</h3>
           <ol>
-            <li class="era-point">Create Module</li>
-            <li class="era-point">Declare ng-app</li>
-            <li class="era-point">Create controller</li>
-            <li class="era-point">Attach items to $scope</li>
-            <li class="era-point">Declare Controller</li>
-            <li class="era-point">Create Template</li>
+            <li class="fragment">Create Module</li>
+            <li class="fragment">Declare ng-app</li>
+            <li class="fragment">Create controller</li>
+            <li class="fragment">Attach items to $scope</li>
+            <li class="fragment">Declare Controller</li>
+            <li class="fragment">Create Template</li>
           </ol>
         </section>
 
@@ -446,12 +453,12 @@ app.controller('MyCtrl', function($scope) {
           <pre>
 <code data-trim class="language-java">
 @Component({
-  selector: 'todo-app',
-  template: new TemplateConfig({
-    url: '/todos.html'
-  })
+  selector: 'todo-app'
 })
-export class TodoApp {
+@View({
+  templateUrl: 'todos.html'
+})
+class TodoApp {
   todos;
   constructor() {
     this.todos = ['Item1', 'Item2'];
@@ -460,7 +467,7 @@ export class TodoApp {
 </code>
           </pre>
         </section>
-        
+
         <section>
           <p class="text-small">bootstrap</p>
           <pre>
@@ -474,8 +481,7 @@ bootstrap(TodoApp);
         </section>
 
         <section title="Bootstrapping">
-          <p class="text-medium">ES6/TypeScript compilation</p>
-          <br> <br>
+          <h2 class="text-medium">ES6/TypeScript compilation</h2>
           <p class="era-point">Use TypeScript Transpiler</p>
           <p class="era-point">In Browser or CLI</p>
           <p class="era-point">Working on key-turn tooling solution</p>
@@ -501,8 +507,10 @@ bootstrap(TodoApp);
           <pre>
 <code data-trim class="language-java">
 @Component({
-  selector: 'name-change',
-  template: new TemplateConfig({ url: 'name-change.html' })
+  selector: 'name-change'
+})
+@View({
+  templateUrl: 'name-change.html'
 })
 class NameChange {
   name;
@@ -516,7 +524,7 @@ class NameChange {
 </code>
           </pre>
           </section>
-          
+
           <section>
           <pre>
 <code data-trim class="language-markup">
@@ -579,8 +587,10 @@ class NameChange {
           <pre>
 <code data-trim class="language-java">
 @Component({
-  selector: 'name-change',
-  template: new TemplateConfig({ url: 'name-change.html' })
+  selector: 'name-change'
+})
+@View({
+  templateUrl: 'name-change.html'
 })
 class NameChange {
   name;
@@ -595,7 +605,7 @@ class NameChange {
           </pre>
           </section>
 
-        <section> 
+        <section>
           <h3>All Together</h3>
           <pre>
 <code data-trim class="language-markup">
@@ -628,7 +638,7 @@ class NameChange {
 &lt;div> My name is {{ name }} &lt;/div&gt;
 &lt;div&gt;
   &lt;input type="text" ng-model="name"&gt;
-  &lt;button ng-name-change="changeName(name)"&gt;Change Name&lt;/button&gt;
+  &lt;button ng-click="changeName(name)"&gt;Change Name&lt;/button&gt;
 &lt;/div&gt;</code></pre>
 
           <p class="text-small">Angular2</small>
@@ -637,7 +647,7 @@ class NameChange {
 &lt;div> My name is {{ name }} &lt;/div&gt;
 &lt;div&gt;
   &lt;input #newname type="text"&gt;
-  &lt;button (namechange)="changeName(newname.value)"&gt;Change Name&lt;/button&gt;
+  &lt;button (click)="changeName(newname.value)"&gt;Change Name&lt;/button&gt;
 &lt;/div&gt;</code></pre>
 
         </section>
@@ -682,6 +692,42 @@ app.controller('UserCtrl', function($scope, $timeout) {
         <section>
           <h2>Show me the code!</h2>
           <h1>&lt;&gt;</h1>
+        </section>
+
+        <section>
+          <h1>Some Thoughts</h1>
+        </section>
+
+        <section>
+          <p>
+            Still very experimental, things changing a lot
+          </p>
+          <p>
+            Router not fully ported/documented yet
+          </p>
+          <p>
+            Forms module has not matured
+          </p>
+        </section>
+
+        <section>
+          <h2>Preparing for Angular 2</h2>
+          <ul>
+            <li class="fragment"><a href="#">Use ES6!</a></li>
+            <li class="fragment">Make everything a directive (Component Approach)</li>
+            <li class="fragment">
+              Use <code><a href="https://github.com/toddmotto/angularjs-styleguide#controllers">controllerAs</a></code> syntax
+            </li>
+            <li class="fragment">Avoid $scope.$watch, use reactive approaches</li>
+            <li class="fragment">Only create services (vs. factories)</li>
+            <li class="fragment">
+              <a href="https://github.com/angular-class/NG6-starter">Use ES6 classes for controllers and services</a></li>
+            <li class="fragment">Use the new router for 1.4</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Thanks!</h1>
         </section>
 
       </div>
