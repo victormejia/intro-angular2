@@ -6,3 +6,4 @@ node_modules/
 .sass-cache
 slides/bower_components
 .grunt
+.publish

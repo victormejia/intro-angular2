@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var ghPages = require('gulp-gh-pages');
 
 // load plugins
 var $ = require('gulp-load-plugins')();
@@ -42,3 +43,9 @@ gulp.task('watch', ['connect'], function () {
   // Watch scss files
   gulp.watch('slides/css/**/*.scss', ['css']);
 });
+
+// gh-pages
+gulp.task('gh-pages', function () {
+  return gulp.src('./slides/**/*')
+    .pipe(ghPages());
+})
