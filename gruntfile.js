@@ -13,6 +13,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-gh-pages');
 
+  //register new grunt tasks
   grunt.registerTask('deploy', ['gh-pages']);
 
 };
