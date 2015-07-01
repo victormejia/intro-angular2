@@ -10,9 +10,11 @@ module.exports = function(grunt) {
       src: '**/*'
     }
   });
-
+  
+  // Use Grunt to push to your gh-pages branch hosted on GitHub or any other branch anywhere else.
   grunt.loadNpmTasks('grunt-gh-pages');
 
+  //register new grunt tasks
   grunt.registerTask('deploy', ['gh-pages']);
 
 };
